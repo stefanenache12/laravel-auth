@@ -8,36 +8,32 @@
             </a>
         </div>
         <div class="nav-links col-4">
-        <ul class="d-flex">
-            @auth
-                <li>
-                    <a href="{{ route('dashboard') }}">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Link 2</a>
-                </li>
-                <li>
-                    <a href="#">Link 3</a>
-                </li>
-            @else
-                <li>
-                    <a href="{{ route('login') }}">Login</a>
-                </li>
-                <li>
-                    <a href="{{ route('register') }}">Register</a>
-                </li>
-            @endauth
-        </ul>
-
-        @auth
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-
-                <button type="submit" class="btn btn-outline-danger">
-                    Log Out
-                </button>
-            </form>
-        @endauth
+            <ul class="d-flex align-items-center">
+                @auth
+                    <li>
+                        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <div>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+    
+                            <button type="submit" class="btn btn-outline-danger">
+                                Log Out
+                            </button>
+                        </form>
+                    </div>
+                @else
+                    <li>
+                        <a href="{{ route('login') }}">Login</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('register') }}">Register</a>
+                    </li>
+                @endauth
+            </ul>
         </div>
     </div>
     
