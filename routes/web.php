@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\Admin\DasboardController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Models\Project;
 
 Route::get('/', function () {
-    return view('guest.welcome');
+
+    $projects = Project::all();
+
+    return view('guest.welcome',compact('projects'));
 });
 
 Route::middleware(['auth', 'verified'])
@@ -27,6 +31,8 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
 
     Route::get('/dashboard', [DasboardController::class, 'dashboard'])->name('dashboard');
+
+    Route::resource('projects',ProjectController::class);
 });
 
 require __DIR__.'/auth.php';

@@ -3,7 +3,7 @@
         <div class="logo col-8">
             <a href="/">
                 <h1>
-                    LOGO
+                    MyPortofolio
                 </h1>
             </a>
         </div>

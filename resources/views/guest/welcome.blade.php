@@ -5,15 +5,31 @@
         <div class="row">
             <div class="col">
                 <div class="card">
-                    <div class="card-body">
-                        <h1 class="text-center text-primary">
+                    <div class="card-body text-center text-primary">
+                        <h1>
                             Welcome!
                         </h1>
-                        <br>
-                        La welcome page è una pagina pubblica (NON protetta)
+                        <h2>
+                            MY PORTOFOLIO
+                        </h2>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row mt-3">
+            @foreach ($projects as $project)
+                <div class="col-4 border text-center">
+                    <h3>
+                       Title: {{ $project->title }}
+                    </h3>
+                    <h5>
+                        Description: {{ $project->description }}
+                    </h5>
+                    <h5>
+                        Languages: {{ $project->languages }}
+                    </h5>
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection
