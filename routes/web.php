@@ -16,14 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\DasboardController;
 use App\Http\Controllers\Admin\ProjectController;
-use App\Models\Project;
+use App\Http\Controllers\Guest\MainController;
 
-Route::get('/', function () {
-
-    $projects = Project::all();
-
-    return view('guest.welcome',compact('projects'));
-});
+Route::get('/',[MainController::class, 'index'])->name('guest.welcome');
+Route::get('/projects/{id}',[MainController::class, 'show'])->name('guest.show');
 
 Route::middleware(['auth', 'verified'])
     ->name('admin.')

@@ -14,7 +14,7 @@ class ProjectController extends Controller
     public function index()
     {   
         $projects = Project::all();
-        return view('admin.index',compact('projects'));
+        return view('admin.projects.index',compact('projects'));
     }
 
     /**
@@ -22,7 +22,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        return view('admin.projects.create');
     }
 
     /**
@@ -56,8 +56,12 @@ class ProjectController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
+        
     {
-        //
+        
+        $project = Project::findOrFail($id);
+
+        return view('admin.projects.edit',compact('project'));
     }
 
     /**
@@ -73,6 +77,11 @@ class ProjectController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+
+        $project -> delete();
+
+        return redirect()->route('admin.projects.index');
+
     }
 }

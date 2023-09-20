@@ -1,5 +1,7 @@
 @extends('layouts.guest')
 
+@section('page-title', 'Welcome')
+
 @section('main-content')
     <div class="container">
         <div class="row">
@@ -28,6 +30,11 @@
                     <h5>
                         Languages: {{ $project->languages }}
                     </h5>
+                    <a href="{{ route('guest.show',['id' => $project->id]) }}">
+                        <button class="btn btn-primary">
+                            VIEW
+                        </button>
+                    </a>
                 </div>
             @endforeach
         </div>
